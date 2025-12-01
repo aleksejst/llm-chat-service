@@ -30,6 +30,9 @@ class Settings(BaseSettings):  # ← Changed from BaseModel to BaseSettings
     )
 
     openrouter_api_key: str = Field(default="", alias="OPENROUTER_API_KEY")
+    openrouter_base_url: str = Field(
+        default="https://openrouter.ai/api/v1", alias="OPENROUTER_BASE_URL"
+    )
     openai_api_key: str = Field(default="", alias="OPENAI_API_KEY")
     anthropic_api_key: str = Field(default="", alias="ANTHROPIC_API_KEY")
 
@@ -63,3 +66,51 @@ def _parse_csv(raw: str) -> List[str]:
     if not raw:
         return []
     return [value.strip() for value in raw.split(",") if value.strip()]
+
+
+# Available models with display names and API identifiers
+AVAILABLE_MODELS = {
+    "OpenAI: GPT-5.1-Codex": "openai/gpt-5.1-codex",
+    "MoonshotAI: Kimi K2 Thinking": "moonshotai/kimi-k2-thinking",
+    "Anthropic: Claude Sonnet 4.5": "anthropic/claude-sonnet-4.5",
+    "Kwaipilot: KAT-Coder-Pro V1": "kwaipilot/kat-coder-pro:free",
+    "Google: Gemini 3 Pro Preview": "google/gemini-3-pro-preview",
+    "xAI: Grok Code Fast 1": "x-ai/grok-code-fast-1",
+    "DeepSeek: DeepSeek V3": "deepseek/deepseek-chat",
+}
+
+# System message presets for different use cases
+SYSTEM_MESSAGES = {
+    "Coding Assistant": (
+        "You are an expert programming assistant specializing in Python, data science, "
+        "and software engineering. Provide clear, well-commented code examples. "
+        "Explain technical concepts concisely. When debugging, identify the root cause "
+        "and suggest best practices. Always use proper code blocks with syntax highlighting."
+    ),
+    "Data Science": (
+        "You are a data science expert. Help with pandas, numpy, scikit-learn, and "
+        "data analysis tasks. Provide working code examples with explanations. "
+        "Suggest visualizations and statistical approaches when relevant. "
+        "Be precise about data types and edge cases."
+    ),
+    "Debugging": (
+        "You are a debugging specialist. Analyze errors systematically: read the stack "
+        "trace, identify the root cause, explain why it happened, and provide a fix. "
+        "Always ask for relevant code context if needed. Teach debugging techniques "
+        "along with solutions."
+    ),
+    "Code Review": (
+        "You are a code review expert. Analyze code for: correctness, efficiency, "
+        "readability, best practices, edge cases, and potential bugs. Be constructive "
+        "and explain the 'why' behind suggestions. Reference Python PEP standards "
+        "when relevant."
+    ),
+    "Learning Mode": (
+        "You are a patient programming tutor. Explain concepts from first principles. "
+        "Use analogies when helpful. Provide simple examples before complex ones. "
+        "Encourage best practices. Ask questions to check understanding."
+    ),
+}
+
+# Default system message
+DEFAULT_SYSTEM_MESSAGE = SYSTEM_MESSAGES["Coding Assistant"]
