@@ -1,0 +1,43 @@
+---
+alwaysApply: true
+---
+# LLM Chat Service - Project Context
+
+## Architecture
+- Backend: FastAPI with async/await patterns
+- Frontend: Gradio embedded in FastAPI
+- Database: PostgreSQL with SQLAlchemy 2.0+
+- Deployment: Docker + Docker Compose
+- LLM Provider: OpenRouter (via OpenAI-compatible client)
+
+## Code Standards
+- Use Python 3.12+ with type hints on all functions
+- Follow async/await patterns for database and API calls
+- Use descriptive variable names (no single-letter vars except loop counters)
+- Add docstrings to all functions and classes
+- Include error handling and logging
+- Follow PEP 8 style guide
+
+## Project Structure
+- Separate concerns: routes, models, database logic in different files
+- Keep configuration in config.py using environment variables
+- Use Pydantic for data validation
+- Use SQLAlchemy declarative models
+
+## Security
+- Never hardcode secrets or API keys
+- Always use environment variables from .env
+- Validate user inputs
+- Use parameterized database queries
+
+## Development Approach
+- Build incrementally, one feature at a time
+- Keep code simple and readable (this is a learning project)
+- Add comments explaining complex logic
+- Test each component before moving to next feature
+
+## Current Phase: Phase 1
+- Basic chat interface with model switching
+- User accounts (simple auth for now)
+- Chat history persistence
+- Cost tracking per conversation

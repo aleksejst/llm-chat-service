@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+Dependency Management:
+- Always use latest stable versions unless there's a known incompatibility
+- Pin exact versions with ==
+- Test that versions work together before committing
+- Update Gradio to 5.x series (4.x is outdated)
+- Keep huggingface_hub at 0.26.x for Gradio 5.x compatibility
+- Document any specific version constraints with inline comments

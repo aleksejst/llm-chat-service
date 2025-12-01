@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+Package Management:
+- Use `uv` instead of pip for all Python package installations
+- In Dockerfiles: install uv first, then use `uv pip install` or `uv sync`
+- Never use bare `pip install` commands
+- Reason: uv is 10-100x faster than pip and handles dependency resolution better
+
+Docker Best Practices:
+- Install uv in Dockerfile before installing packages
+- Use uv's caching for faster rebuilds
+- Example pattern:
+  RUN pip install uv
+  RUN uv pip install --system -r requirements.txt

@@ -1,0 +1,11 @@
+# Package Management
+- Always use `uv` instead of pip 
+- Docker: Install uv first, then use for all package installs 
+- Commands: `uv pip install` not `pip install` 
+- Faster builds, better dependency resolution 
+
+# Project Standards 
+- Python 3.12 
+- Type hints required 
+- Async/await patterns for I/O 
+- Pin all dependency versions 

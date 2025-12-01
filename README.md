@@ -19,11 +19,27 @@ A multi-model chat interface with user authentication and usage tracking.
 
 ## Development Setup 
 
-Coming soon... 
+1. Copy the sample environment configuration:
+   ```bash
+   cp .env.example .env
+   ```
+2. Start the stack with Docker Compose:
+   ```bash
+   docker compose up --build
+   ```
+3. Visit the FastAPI docs at http://localhost:8000/docs or the Gradio UI at http://localhost:8000/ui.
+
+To run the API directly on your machine:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
 
 ## Deployment 
 
-Coming soon... 
+Deploy with Docker by building the image and running it alongside PostgreSQL using the provided `docker-compose.yml`. Configure environment variables through `.env` or your orchestrator's secret manager. 
 
 ## License 
 MIT License 

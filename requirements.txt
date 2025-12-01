@@ -1,0 +1,22 @@
+# FastAPI and ASGI server
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+
+# Database
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+psycopg2-binary==2.9.10  # For sync operations if needed
+
+# UI
+gradio==5.7.1  # Latest stable with persistent chat
+huggingface_hub==0.26.2  # Compatible with Gradio 5.x
+
+# Configuration
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic-settings==2.6.1  # ← Add this line
+email-validator==2.2.0
+
+# LLM APIs
+openai==1.55.3  # Latest with OpenRouter support
+
